@@ -1,0 +1,41 @@
+﻿@using Microsoft.AspNet.Identity
+
+<div class="col-sm-2">
+    <ul class="nav nav-tabs nav-stacked">
+        <li class="nav-item">
+            @Html.ActionLink("Профил", "Overview", "Profile", new { userName = ViewBag.Username, area = "Users" }, null)
+            @*<a class="nav-link active" href="#">Профил</a>*@
+            <hr style="margin: 0; border-color: gray">
+        </li>
+        <li class="nav-item">
+            @Html.ActionLink("Дневник", "NoteInfo", "Profile", new { userName = ViewBag.Username, area = "Users" }, null)
+            @*<a class="nav-link" href="#">Дневник</a>*@
+            <hr style="margin: 0; border-color: gray">
+        </li>
+        <li class="nav-item">
+            @Html.ActionLink("Галерия", "Index", "Galleries")
+            <hr style="margin: 0; border-color: gray">
+        </li>
+        <li class="nav-item">
+            @Html.ActionLink("Followers", "Followers", "Profile", new { userName = ViewBag.Username, area = "Users" }, null)
+            @*<a class="nav-link" href="#">Followers</a>*@
+            <hr style="margin: 0; border-color: gray">
+        </li>
+        <li class="nav-item">
+            @Html.ActionLink("Followings", "Followings", "Profile", new { userName = ViewBag.Username, area = "Users" }, null)
+            <hr style="margin: 0; border-color: gray">
+        </li>
+        @if (this.User.Identity.GetUserName() == ViewBag.Username)
+        {
+            <li class="nav-item">
+                @Html.ActionLink("Настройки", "Edit", "Profile", new { userName = ViewBag.Username }, null)
+                @*<a class="nav-link" href="#">Настройки</a>*@
+                <hr style="margin: 0; border-color: gray">
+            </li>
+        }       
+    </ul>
+</div>
+
+
+
+

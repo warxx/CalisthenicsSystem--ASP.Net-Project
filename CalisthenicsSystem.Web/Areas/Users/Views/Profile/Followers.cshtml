@@ -1,0 +1,71 @@
+﻿@using CalisthenicsSystem.Web.Extensions
+@model IEnumerable<CalisthenicsSystem.Models.ViewModels.Users.Profiles.FollowsVm>
+
+@{
+    ViewBag.Title = "Followers";
+}
+
+<div class="jumbotron">
+    <div clas="container">
+        <div class="row">
+            @Html.Partial("_ProfileView")
+            <div class="col-sm-offset-1 col-sm-8">
+                <div class="panel panel-primary" style="background-color: rgba(245, 245, 245, 0)">
+                    <div class="panel-heading">
+                        Followers
+                    </div>
+
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-sm-offset-1 col-sm-10">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                </th>
+                                                <th>
+                                                    @Html.DisplayNameFor(vm => vm.UserName)
+                                                </th>
+                                                <th>
+                                                    @Html.DisplayNameFor(vm => vm.Followers)
+                                                </th>
+                                                <th>
+                                                    @Html.DisplayNameFor(vm => vm.Followings)
+                                                </th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                            @foreach (var item in Model)
+                                            {
+                                                <tr>
+                                                    <td style="vertical-align: middle">
+                                                        @Html.Image($"/Content/images/avatars/{item.AvatarPath}", "80", "80", "avatar-profile", "img-rounded")
+                                                    </td>
+                                                    <td style="vertical-align: middle; text-align: center">
+                                                        @Html.ActionLink($"{item.UserName}", "Overview", new { userName = $"{item.UserName}" }, null)
+                                                    </td>
+                                                    <td style="vertical-align: middle; text-align: center">
+                                                        @Html.DisplayFor(vm => item.Followers)
+                                                    </td>
+                                                    <td style="vertical-align: middle; text-align: center">
+                                                        @Html.DisplayFor(vm => item.Followings)
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                            </div>                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

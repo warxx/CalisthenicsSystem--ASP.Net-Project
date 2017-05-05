@@ -1,0 +1,40 @@
+﻿@model IEnumerable<CalisthenicsSystem.Models.ViewModels.Articles.AllArticlesVm>
+
+@{
+    ViewBag.Title = "Articles";
+}
+
+<div class="jumbotron">
+    <div clas="container">
+        <h2>Статии</h2>
+        <br />
+        @if (this.User.IsInRole("BlogAuthor"))
+        {
+            <a href="add" class="btn btn-success" style="margin-bottom: 20px"><span class="glyphicon glyphicon-plus"></span> Нова статия</a>
+        }
+        
+        
+        
+        @if (this.User.Identity.IsAuthenticated)
+        {
+            <br />
+            using (Ajax.BeginForm("Search",
+                 new AjaxOptions()
+                 {
+                     UpdateTargetId = "articles",
+                     InsertionMode = InsertionMode.Replace
+                 }))
+            {
+                 <input style="display: inline" type="text" name="word" class="form-control"/>
+                 <input style="display: inline" type="submit" class="btn btn-info" value="Търсене"/>
+             }
+        }
+
+        <div id="articles">
+            @Html.Partial("_AllArticles", Model)
+        </div>
+         
+    </div>
+</div>
+
+

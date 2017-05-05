@@ -1,0 +1,39 @@
+﻿@model CalisthenicsSystem.Models.ViewModels.Users.Profiles.FollowUserVm
+
+@{
+    ViewBag.Title = "Follow";
+}
+
+<div class="jumbotron">
+    <div clas="container">
+        <div class="row">
+            @Html.Partial("_ProfileView")
+            <div class="col-sm-offset-1 col-sm-8">
+                <div class="panel panel-primary" style="background-color: rgba(245, 245, 245, 0)">
+                    <div class="panel-heading">
+                        Профил
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-sm-10">
+                                <h5>Сигурен ли си, че искаш да последваш <span class="bg-success">@Model.UserName</span> ?</h5>
+
+                                @using (Html.BeginForm())
+                                {
+                                    <div class="form-actions no-color">
+                                        <input type="submit" value="Последвай" class="btn btn-primary" />
+                                        @Html.ActionLink("Откажи", "Overview", new { userName = $"{Model.UserName}" }, new { @class = "btn btn-default" })
+                                    </div>
+                                }
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>                                    
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

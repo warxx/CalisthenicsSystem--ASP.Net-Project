@@ -1,0 +1,62 @@
+﻿@model IEnumerable<CalisthenicsSystem.Models.ViewModels.Admin.AllMessagesVm>
+
+@{
+    ViewBag.Title = "All Messages";
+}
+
+<div class="jumbotron" style="background-color: white">
+    <div clas="container">
+        <div class="row">
+            @Html.Partial("_AdminNav")
+
+        </div>
+        <div class="row">
+            
+            <div>
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(vm => vm.Id)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(vm => vm.Title)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(vm => vm.PublishDate)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(vm => vm.Sender)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr class="success">
+                                <td>
+                                    @Html.DisplayFor(vm => item.Id)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(vm => item.Title)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(vm => item.PublishDate)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(vm => item.Sender)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Покажи съобщение", "Message", "Admin", new { id = item.Id, area = "Admin" }, null)
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+

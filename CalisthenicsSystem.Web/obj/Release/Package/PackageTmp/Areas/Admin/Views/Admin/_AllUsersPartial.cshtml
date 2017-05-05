@@ -1,0 +1,44 @@
+﻿@model IEnumerable<CalisthenicsSystem.Models.ViewModels.Admin.UserVm>
+
+@{
+    ViewBag.Title = "_AllUsersPartial";
+}
+
+<table class="table table-striped table-hover ">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(vm => vm.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(vm => vm.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(vm => vm.Email)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="success">
+                <td>
+                    @Html.DisplayFor(vm => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(vm => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(vm => item.Email)
+                </td>
+                <td>
+                    @Html.ActionLink("Set Role", "SetRole", new { userName = $"{item.UserName}" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+

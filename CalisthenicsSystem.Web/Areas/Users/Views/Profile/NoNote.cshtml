@@ -1,0 +1,43 @@
+﻿@using CalisthenicsSystem.Web.Extensions
+
+@{
+    ViewBag.Title = "Note Info";
+}
+
+<div class="jumbotron">
+    <div clas="container">
+        <div class="row">
+            @Html.Partial("_ProfileView")
+            <div class="col-sm-offset-1 col-sm-8">
+                <div class="panel panel-primary" style="background-color: rgba(245, 245, 245, 0)">
+                    <div class="panel-heading">
+                        Дневник
+                    </div>
+
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-sm-offset-1 col-sm-10">
+                                @if (this.User.Identity.Name == ViewBag.Username)
+                                {
+                                    <h4 style="color:dodgerblue">Ти все още нямаш дневник. Можеш да го създадеш веднага като натиснеш "Създай дневник" и започнеш да си водиш записки в него.</h4>
+                                    @Html.ActionLink("Създай дневник", "Create", "Note", new { userName = ViewBag.Username }, new { @class="btn btn-warning" })
+                                    <br/>
+                                    <br/>
+                                    @Html.Image("/Content/images/no-note.jpg", "300", "200", "no-note", "img-thumbnail")
+                                }
+                                else
+                                {
+                                    <h4 style="color:dodgerblue">Този потребител все още няма дневник.</h4>
+                                    <br/>
+                                    @Html.Image("/Content/images/no-note.jpg", "300", "200", "no-note", "img-thumbnail")
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,24 @@
+﻿@model CalisthenicsSystem.Models.ViewModels.Admin.MessageVm
+
+@{
+    ViewBag.Title = "Message";
+}
+
+<div class="jumbotron" style="background-color: white">
+    <div clas="container">
+        <div class="row">
+            @Html.Partial("_AdminNav")
+
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <p style="font-size: 20px">@Html.DisplayNameFor(vm => vm.Sender): @Html.DisplayFor(vm => vm.Sender)</p>
+                <p style="font-size: 20px">@Html.DisplayNameFor(vm => vm.Email): @Html.DisplayFor(vm => vm.Email)</p>
+                <p style="font-size: 20px">@Html.DisplayNameFor(vm => vm.PublishDate): @Html.DisplayFor(vm => vm.PublishDate)</p>
+                <p style="font-size: 20px">@Html.DisplayNameFor(vm => vm.Content): @Html.DisplayFor(vm => vm.Content)</p>
+                @Html.ActionLink("[Върни се обратно]", "AllContacts", "Admin")
+            </div>
+            
+        </div>
+    </div>
+</div>

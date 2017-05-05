@@ -1,0 +1,20 @@
+﻿@using CalisthenicsSystem.Web.Extensions
+
+@{
+    ViewBag.Title = "Index Gallery";
+}
+
+<div class="jumbotron">
+    <div clas="container">
+        <div class="row">
+            @Html.Partial("_ProfileView")
+            <div class="col-sm-offset-1 col-sm-8">
+                <p style="color: red; font-size: 30px">Скъпи потребители, разделът <u>Галерия</u> е в процес на разработка и скоро ще е актуален.</p>
+
+                @Html.Image("/Content/images/work_in_progress.gif", alt: "work-in-progress", @class: "img-responsive")
+            </div>
+        </div>
+    </div>
+</div>
+
+

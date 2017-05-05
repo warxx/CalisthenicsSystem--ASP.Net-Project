@@ -1,0 +1,51 @@
+﻿@model IEnumerable<CalisthenicsSystem.Models.ViewModels.Admin.UserVm>
+
+@{
+    ViewBag.Title = "All";
+}
+
+<div class="jumbotron" style="background-color: white">
+    <div clas="container">
+        <div class="row">
+            @Html.Partial("_AdminNav")
+
+            @using (Ajax.BeginForm("SearchUser", new { area = "Admin" },
+                new AjaxOptions()
+                {
+                    UpdateTargetId = "users-table",
+                    InsertionMode = InsertionMode.Replace
+                }))
+            {
+                <input type="text" name="word" class="form-control" style="max-width: 200px; display: inline" />
+                <select name="category" class="form-control" style="display: inline; max-width: 200px;">
+                    <option value="username">Потребителско име</option>
+                    <option value="email">Емайл</option>
+                </select>
+                <select name="type" class="form-control" style="display: inline; max-width: 140px;">
+                    <option value="ascending">Възходящ</option>
+                    <option value="descending">Низходящ</option>
+                </select>
+                <input type="submit" class="btn btn-success" style="display: inline" value="Намери" />
+            }
+
+            @*@using (Ajax.BeginForm("SortUsers", new { area = "Admin", style = "float: right" },
+                new AjaxOptions()
+                {
+                    UpdateTargetId = "users-table",
+                    InsertionMode = InsertionMode.Replace
+                }))
+            {
+                
+                <input type="submit" class="btn btn-primary" style="display: inline" value="Сортирай" />
+            }*@
+        </div>
+
+        <div class="row">
+            <div id="users-table">
+                @Html.Partial("_AllUsersPartial", Model)
+            </div>
+        </div>
+    </div>
+</div>
+
+

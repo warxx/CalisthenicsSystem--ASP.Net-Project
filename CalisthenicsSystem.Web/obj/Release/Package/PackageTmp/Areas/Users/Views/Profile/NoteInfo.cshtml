@@ -1,0 +1,56 @@
+﻿@using CalisthenicsSystem.Web.Extensions
+@model CalisthenicsSystem.Models.ViewModels.Users.Profiles.UserNoteVm
+@{
+    ViewBag.Title = "NoteInfo";
+}
+
+<div class="jumbotron">
+    <div clas="container">
+        <div class="row">
+            @Html.Partial("_ProfileView")
+            <div class="col-sm-offset-1 col-sm-8">
+                <div class="panel panel-primary" style="background-color: rgba(245, 245, 245, 0)">
+                    <div class="panel-heading">
+                        Дневник
+                    </div>
+
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <table class="table" style="margin-top: 20px; background-color: white; border-radius: 7px">
+                                    <tbody>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(vm => vm.Name)</td>
+                                        <td style="word-break: break-all">@Html.DisplayFor(vm => vm.Name)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(vm => vm.DateCreated)</td>
+                                        <td>@Html.DisplayFor(vm => vm.DateCreated)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(vm => vm.AllTopics)</td>
+                                        <td>@Html.DisplayFor(vm => vm.AllTopics)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(vm => vm.AllReplies)</td>
+                                        <td>@Html.DisplayFor(vm => vm.AllReplies)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(vm => vm.Views)</td>
+                                        <td>@Html.DisplayFor(vm => vm.Views)</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                
+                                @Html.ActionLink("[Към дневник]", "Index", "Note", new { area = "Users", userName = ViewBag.Username }, null)
+                            </div>
+                            <div class="col-sm-4">
+                                @Html.Image("/Content/images/note-info.png", "200", "240", "note-info-img")
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

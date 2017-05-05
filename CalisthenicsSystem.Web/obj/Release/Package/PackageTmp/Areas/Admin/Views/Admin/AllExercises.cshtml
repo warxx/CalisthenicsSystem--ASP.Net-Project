@@ -1,0 +1,39 @@
+﻿@model IEnumerable<CalisthenicsSystem.Models.ViewModels.Admin.ExerciseVm>
+
+@{
+    ViewBag.Title = "All Exercises";
+}
+
+<div class="jumbotron" style="background-color: white">
+    <div clas="container">
+        <div class="row">
+            @Html.Partial("_AdminNav")
+            
+            @using (Ajax.BeginForm("SearchExercise", new { area = "Admin" },
+                new AjaxOptions()
+                {
+                    UpdateTargetId = "exercises-table",
+                    InsertionMode = InsertionMode.Replace
+                }))
+            {
+                <input type="text" name="word" class="form-control" style="max-width: 200px; display: inline" />
+                <select name="category" class="form-control" style="display: inline; max-width: 200px;">
+                    <option value="name">Име</option>
+                    <option value="publishdate">Дата</option>
+                    <option value="author">Автор</option>
+                </select>
+                <select name="type" class="form-control" style="display: inline; max-width: 140px;">
+                    <option value="ascending">Възходящ</option>
+                    <option value="descending">Низходящ</option>
+                </select>
+                <input type="submit" class="btn btn-success" style="display: inline" value="Намери" />
+            }           
+        </div>
+        
+        <div class="row">
+            <div id="exercises-table">
+                @Html.Partial("_AllExercisesPartial", Model)
+            </div>
+        </div>
+    </div>
+</div>

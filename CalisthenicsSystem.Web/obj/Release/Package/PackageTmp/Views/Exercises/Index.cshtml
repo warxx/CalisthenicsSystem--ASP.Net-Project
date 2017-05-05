@@ -1,0 +1,107 @@
+﻿@using CalisthenicsSystem.Web.Extensions
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="jumbotron">
+    <div class="container">
+        <h2>Упражнения</h2>
+        <br />
+        
+        @if (this.User.Identity.IsAuthenticated)
+        {
+            using (Ajax.BeginForm("Search",
+            new AjaxOptions()
+            {
+                UpdateTargetId = "exercises",
+                InsertionMode = InsertionMode.Replace,
+            }))
+            {
+                <input style="display: inline" type="text" name="word" class="form-control" />
+                <input style="display: inline" type="submit" class="btn btn-info" value="Търсене" />
+            }
+        }
+        
+        <br/>
+
+        <div id="exercises">
+            <div class="row">
+                <a href="exercises/types/arms" class="exercises-link">
+                    <div class="col-sm-4">
+                        <div class="exercises">
+                            <img src="~/Content/images/Muscles/arm-muscle.jpg" alt="Card image cap" class="img-responsive">
+                            <div style="background-color: white">
+                                <p style="text-align: center; margin-bottom: 0;">Ръце</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="exercises/types/back" class="exercises-link">
+                    <div class="col-sm-4">
+                        <div class="exercises">
+                            <img src="~/Content/images/Muscles/back-muscle.jpg" alt="Card image cap" class="img-responsive">
+                            <div style="background-color: white">
+                                <p style="text-align: center; margin-bottom: 0;">Гръб</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </a>
+
+                <a href="exercises/types/chest" class="exercises-link">
+                    <div class="col-sm-4">
+                        <div class="exercises">
+                            <img src="~/Content/images/Muscles/chest-muscle.jpg" alt="Card image cap" class="img-responsive">
+                            <div style="background-color: white">
+                                <p style="text-align: center; margin-bottom: 0;">Гърди</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <br />
+            <br />
+
+            <div class="row">
+                <a href="exercises/types/deltoids" class="exercises-link">
+                    <div class="col-sm-4">
+                        <div class="exercises">
+                            <img src="~/Content/images/Muscles/shoulder-muscle.jpg" alt="Card image cap" class="img-responsive">
+                            <div style="background-color: white">
+                                <p style="text-align: center; margin-bottom: 0;">Рамо</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="exercises/types/abs" class="exercises-link">
+                    <div class="col-sm-4">
+                        <div class="exercises">
+                            <img src="~/Content/images/Muscles/abs-muscle.jpg" alt="Card image cap" class="img-responsive">
+                            <div style="background-color: white">
+                                <p style="text-align: center; margin-bottom: 0;">Корем</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="exercises/types/legs" class="exercises-link">
+                    <div class="col-sm-4">
+                        <div class="exercises">
+                            <img src="~/Content/images/Muscles/legs-muscle.jpg" alt="Card image cap" class="img-responsive">
+                            <div style="background-color: white">
+                                <p style="text-align: center; margin-bottom: 0;">Крака</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+                
+    </div>
+</div>
+
+
+
+

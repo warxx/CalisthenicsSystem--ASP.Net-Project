@@ -1,0 +1,39 @@
+﻿@model CalisthenicsSystem.Models.ViewModels.Articles.ArticleDetailsVm
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="jumbotron">
+    <div clas="container">
+        <div class="row">
+            <div class="article-details col-sm-offset-2 col-sm-8">
+                @if (this.User.IsInRole("BlogAuthor"))
+                {
+                    <a href="@Url.Action("Edit", new {articleId = Model.Id})" class="btn btn-warning col-sm-offset-9"><span class="glyphicon glyphicon-pencil"></span> Редактирай</a>
+                }
+                
+                <h2>@Model.Name</h2>
+                <br/>
+                <p style="font-size: 17px; color: grey;">
+                    <span class="glyphicon glyphicon-user"></span>
+                    @Model.AuthorName
+                    <span class="glyphicon glyphicon-calendar col-sm-offset-5"></span>
+                    @Model.PublishDate
+                </p>
+                <hr style="height: .8px; background-color: lightgray;"/>
+
+                <img src="@Model.ImageUrl" class="img-responsive img-details"/>
+                <br/>
+                <br/>
+
+                <p style="word-wrap: break-word">
+                    @Model.Content
+                </p>
+                <hr style="height: .8px; background-color: lightgray;"/>
+                @Html.ActionLink("Върни се обратно", "All", "Articles")
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+﻿@using CalisthenicsSystem.Web.Extensions
+@model CalisthenicsSystem.Models.ViewModels.Exercises.DeleteExerciseVm
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="jumbotron">
+    <div clas="container">
+        <h3>Сигурен ли си, че искаш да изтриеш това упражнение ?</h3>
+
+        @using (Html.BeginForm("Delete", "Exercises", new { exerciseId = $"{Model.Id}" }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-group">
+                <div class="col-md-12">
+                    <input type="submit" value="Изтрий" class="btn btn-success" style="margin-right: 15px;" />
+                    @Html.ActionLink("Откажи", "Index", "Exercises", null, new { @class = "btn btn-danger" })
+                </div>
+            </div>
+        }
+
+        <p style="font-size: 18px">@Html.DisplayNameFor(vm => vm.Name): <strong>@Html.DisplayFor(vm => vm.Name)</strong></p>
+        <p style="font-size: 18px">@Html.DisplayNameFor(vm => vm.AuthorName): <strong style="background-color:greenyellow">@Html.DisplayFor(vm => vm.AuthorName)</strong></p>
+        <p style="font-size: 18px">@Html.DisplayNameFor(vm => vm.PublishDate): <strong>@Html.DisplayFor(vm => vm.PublishDate)</strong></p>
+
+        @Html.Image(Model.ImageUrl, "250", "250", "exercise-img", "img-thumbnail")
+
+
+    </div>
+</div>
+

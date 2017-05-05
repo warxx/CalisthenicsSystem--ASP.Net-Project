@@ -1,0 +1,22 @@
+﻿@model IEnumerable<CalisthenicsSystem.Models.ViewModels.Exercises.AllExercisesVm>
+
+@{
+    ViewBag.Title = "Exercises";
+}
+
+<div class="jumbotron">
+    <div clas="container">
+        <h2>Упражнения</h2>
+        <br />
+        @if (this.User.IsInRole("BlogAuthor"))
+        {
+            <a href="~/exercises/add" class="btn btn-success" style="margin-bottom: 20px"><span class="glyphicon glyphicon-plus"></span> Ново упражнение</a>
+        }
+        <br/>
+        
+        <div id="exercises">
+            @Html.Partial("_AllExercises", Model)
+        </div>
+    </div>
+</div>
+

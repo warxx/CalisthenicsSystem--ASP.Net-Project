@@ -1,0 +1,54 @@
+﻿@model IEnumerable<CalisthenicsSystem.Models.ViewModels.Admin.ExerciseVm>
+
+@{
+    ViewBag.Title = "_AllExercisesPartial";
+}
+
+<table class="table table-striped table-hover ">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(vm => vm.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(vm => vm.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(vm => vm.PublishDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(vm => vm.AuthorName)
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="success">
+                <td>
+                    @Html.DisplayFor(vm => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(vm => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(vm => item.PublishDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(vm => item.AuthorName)
+                </td>
+                <td>
+                    @Html.ActionLink("Редактирай", "Edit", "Exercises", new { exerciseId = item.Id, area = "" }, null)
+                </td>
+                <td>
+                    @Html.ActionLink("Изтрий", "Delete", "Exercises", new { exerciseId = item.Id, area = "" }, null)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+

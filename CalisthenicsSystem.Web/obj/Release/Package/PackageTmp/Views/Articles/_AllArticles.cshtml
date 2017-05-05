@@ -1,0 +1,23 @@
+﻿@using CalisthenicsSystem.Web.Extensions
+@model IEnumerable<CalisthenicsSystem.Models.ViewModels.Articles.AllArticlesVm>
+
+@foreach (var item in Model)
+{
+    <div class="container">
+        <div>
+            <h4>@Html.ActionLink($"{item.Name}", "Details", "Articles", new { articleId = item.Id }, new { @class = "article-link" })</h4>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3">
+                @Html.Image($"{item.ImageUrl}", "500", "300", "article-img", "img-exercise img-thumbnail")
+            </div>
+            <div class="col-sm-9">
+                <p style="word-wrap: break-word">@item.Content ... <br />@Html.ActionLink("Прочети още", "Details", "Articles", new { articleId = item.Id }, new { @class = "article-link" }) </p>
+            </div>
+        </div>
+        <hr />
+    </div>
+}
+
+

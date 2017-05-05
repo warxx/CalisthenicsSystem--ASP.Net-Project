@@ -1,0 +1,74 @@
+﻿@using CalisthenicsSystem.Web.Extensions
+@model CalisthenicsSystem.Models.ViewModels.Users.Profiles.ProfileOverviewVm
+@{
+    ViewBag.Title = "Overview";
+}
+
+<div class="jumbotron">
+    <div clas="container">
+        <div class="row">
+            @Html.Partial("_ProfileView")
+            <div class="col-sm-offset-1 col-sm-8">
+                <div class="panel panel-primary" style="background-color: rgba(245, 245, 245, 0)">
+                    <div class="panel-heading">
+                        Профил
+                    </div>
+                    
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-sm-3" style="text-align: center">
+                                <h4 class="text">@Model.UserName</h4>
+                                @Html.Image($"/Content/images/avatars/{Model.AvatarPath}", "150", "150", "profile-avatar", "avatar-profile img-circle")
+                                <hr />
+                                @if (Model.UserName != this.User.Identity.Name)
+                                {
+                                    @Html.ActionLink("Follow", "Follow", new { userName = $"{Model.UserName}" }, new { @class = "btn btn-primary" })
+                                }
+                            </div>
+                            <div class="col-sm-9">
+                                <table class="table" style="margin-top: 20px; background-color: white; border-radius: 7px">
+                                    <tbody>
+                                        <tr>
+                                            <td>@Html.DisplayNameFor(vm => vm.Name)</td>
+                                            <td>@Html.DisplayFor(vm => vm.Name)</td>
+                                        </tr>
+                                        <tr>
+                                            @if (Model.BirthDate == null)
+                                            {
+                                                <td>@Html.DisplayNameFor(vm => vm.BirthDate)</td>
+                                                <td>Няма информация</td>
+                                            }
+                                            else
+                                            {
+                                                <td>@Html.DisplayNameFor(vm => vm.BirthDate)</td>
+                                                <td>@Html.DisplayFor(vm => vm.BirthDate)</td>
+                                            }
+
+                                        </tr>
+                                        <tr>
+                                            <td>@Html.DisplayNameFor(vm => vm.BirthPlace)</td>
+                                            <td>@Html.DisplayFor(vm => vm.BirthPlace)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>@Html.DisplayNameFor(vm => vm.Gender)</td>
+                                            <td>@Html.DisplayFor(vm => vm.Gender)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>@Html.DisplayNameFor(vm => vm.LastLogin)</td>
+                                            <td>@Html.DisplayFor(vm => vm.LastLogin)</td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>                                                           
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
